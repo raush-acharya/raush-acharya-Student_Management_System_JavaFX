@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaassignment.ProblemForm">
    <children>
       <AnchorPane prefHeight="402.0" prefWidth="600.0">
          <children>
@@ -23,12 +23,12 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <TextField layoutX="141.0" layoutY="95.0" prefHeight="25.0" prefWidth="318.0" promptText="Problem Title" />
-            <TextField layoutX="141.0" layoutY="140.0" promptText="Student ID" />
-            <TextField layoutX="308.0" layoutY="140.0" promptText="Student Name" />
-            <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
-            <TextArea layoutX="141.0" layoutY="182.0" prefHeight="155.0" prefWidth="318.0" promptText="Describe your problem" />
-            <Button layoutX="394.0" layoutY="355.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Submit" textFill="WHITE" />
+            <TextField fx:id="problemTitle" layoutX="141.0" layoutY="95.0" prefHeight="25.0" prefWidth="318.0" promptText="Problem Title" />
+            <TextField fx:id="studentName" layoutX="141.0" layoutY="140.0" promptText="Student Name" />
+            <TextField fx:id="Faculty" layoutX="308.0" layoutY="140.0" promptText="Faculty" />
+            <Button fx:id="backButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
+            <TextArea fx:id="problemDescription" layoutX="141.0" layoutY="182.0" prefHeight="155.0" prefWidth="318.0" promptText="Describe your problem" />
+            <Button fx:id="submitButton" layoutX="394.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Submit" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

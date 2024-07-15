@@ -10,9 +10,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-import static javafx.application.Application.launch;
-
 public class StaffPage {
+
     @FXML
     private Button logoutButton;
 
@@ -26,14 +25,32 @@ public class StaffPage {
     private Button gotoLibrarian;
 
     @FXML
-    private void handleLogoutButtonAction(ActionEvent event) throws IOException{
-        // Code to handle logout (e.g., redirect to login screen)
+    private void handleLogoutButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
-        Scene scene;
-        scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml"))));
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml"))));
         stage.setScene(scene);
         stage.show();
     }
 
+    @FXML
+    private void handleGotoTeacherAction(ActionEvent event) throws IOException {
+        navigateToPage("TeacherPage.fxml");
+    }
 
+    @FXML
+    private void handleGotoAdmissionAction(ActionEvent event) throws IOException {
+        navigateToPage("AdmissionPage.fxml");
+    }
+
+    @FXML
+    private void handleGotoLibrarianAction(ActionEvent event) throws IOException {
+        navigateToPage("LibraryPage.fxml");
+    }
+
+    private void navigateToPage(String fxmlFile) throws IOException {
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlFile))));
+        stage.setScene(scene);
+        stage.show();
+    }
 }

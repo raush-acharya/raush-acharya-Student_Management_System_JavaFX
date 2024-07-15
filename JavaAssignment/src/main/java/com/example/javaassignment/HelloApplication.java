@@ -37,6 +37,9 @@ public class HelloApplication extends Application {
 
     private static final String FILE_PATH = "users.csv";
 
+    private String loggedInUser;
+    private String loggedInFaculty;
+
     @FXML
     public void initialize() {
         myChoiceBox.getItems().addAll(choices);
@@ -58,12 +61,7 @@ public class HelloApplication extends Application {
         String enteredUsername = username.getText();
         String enteredPassword = password.getText();
 
-        System.out.println(selectedRole);
-        System.out.println(enteredPassword);
-        System.out.println(enteredUsername);
-
         boolean validCredentials = validateCredentials(enteredUsername, enteredPassword, selectedRole);
-        System.out.println(validCredentials);
 
         if (validCredentials) {
             switchToRolePage(selectedRole);
@@ -83,12 +81,9 @@ public class HelloApplication extends Application {
                 String filePassword = userData[4];
                 String fileRole = userData[7];
 
-                System.out.println("fileusername:");
-                System.out.println(fileUsername);
-                System.out.println(filePassword);
-                System.out.println(fileRole);
-
                 if (fileUsername.equals(username) && filePassword.equals(password) && fileRole.equals(role)) {
+                    loggedInUser = userData[0]+" "+ userData[1];
+                    loggedInFaculty = userData[6];
                     return true;
                 }
             }
@@ -100,17 +95,23 @@ public class HelloApplication extends Application {
 
     private void switchToRolePage(String role) throws IOException {
         Stage stage = (Stage) loginButton.getScene().getWindow();
+        FXMLLoader loader;
         Scene scene;
 
         switch (role) {
             case "Admin":
-                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AdminPage.fxml"))));
+                loader = new FXMLLoader(getClass().getResource("AdminPage.fxml"));
+                scene = new Scene(loader.load());
                 break;
             case "Staff":
-                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StaffPage.fxml"))));
+                loader = new FXMLLoader(getClass().getResource("StaffPage.fxml"));
+                scene = new Scene(loader.load());
                 break;
             case "Student":
-                scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StudentDashboard.fxml"))));
+                loader = new FXMLLoader(getClass().getResource("StudentDashboard.fxml"));
+                scene = new Scene(loader.load());
+                StudentDashboard studentDashboard = loader.getController();
+                studentDashboard.setUserData(loggedInUser, loggedInFaculty);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + role);

@@ -27,9 +27,16 @@ public class StudentDashboard {
     @FXML
     private Button viewProfile;
 
+    private String studentName;
+    private String faculty;
+
+    public void setUserData(String studentName, String faculty) {
+        this.studentName = studentName;
+        this.faculty = faculty;
+    }
+
     @FXML
     private void handleLogoutButtonAction(ActionEvent event) throws IOException {
-        // Code to handle logout (e.g., redirect to login screen)
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         Scene scene;
         scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml"))));
@@ -37,5 +44,14 @@ public class StudentDashboard {
         stage.show();
     }
 
-
+    @FXML
+    private void handleReportProblemButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProblemForm.fxml"));
+        Stage stage = (Stage) reportProblem.getScene().getWindow();
+        Scene scene = new Scene(loader.load());
+        ProblemForm problemForm = loader.getController();
+        problemForm.setUserData(studentName, faculty);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

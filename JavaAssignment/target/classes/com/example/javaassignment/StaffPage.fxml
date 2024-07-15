@@ -20,18 +20,19 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                     </children></Pane>
-                  <Button fx:id="gotoTeacher" layoutX="66.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Teacher" textFill="WHITE">
+                     </children>
+                  </Pane>
+                  <Button fx:id="gotoTeacher" layoutX="66.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Teacher" textFill="WHITE" onAction="#handleGotoTeacherAction">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gotoLibrarian" layoutX="441.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Librarian" textFill="WHITE">
+                  <Button fx:id="gotoLibrarian" layoutX="441.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Librarian" textFill="WHITE" onAction="#handleGotoLibrarianAction">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="gotoAdmission" layoutX="253.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Admission" textFill="WHITE">
+                  <Button fx:id="gotoAdmission" layoutX="253.0" layoutY="185.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="93.0" style="-fx-background-color: #76ABAE;" text="Admission" textFill="WHITE" onAction="#handleGotoAdmissionAction">
                      <font>
                         <Font size="13.0" />
                      </font>
