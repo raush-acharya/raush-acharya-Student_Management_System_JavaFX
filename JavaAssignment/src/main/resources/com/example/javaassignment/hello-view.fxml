@@ -30,13 +30,15 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Label fx:id="errorLabel" layoutX="277.0" layoutY="268.0" text="Invalid Credentials" textFill="#ff5e5e" visible="false" />
+                  <Label fx:id="errorLabel1" layoutX="282.0" layoutY="288.0" text="Please Try Again" textFill="WHITE" visible="false" />
+                  <Button fx:id="loginButton" layoutX="295.0" layoutY="313.0" mnemonicParsing="false" style="-fx-background-color: #76ABAE;" text="LogIn" textFill="#eeeeee" />
                </children>
             </Pane>
-            <PasswordField fx:id="password" layoutX="246.0" layoutY="189.0" promptText="Password" />
+            <PasswordField fx:id="password" layoutX="246.0" layoutY="183.0" promptText="Password" />
             <TextField fx:id="username" layoutX="246.0" layoutY="133.0" promptText="Username" />
-            <ChoiceBox id="myChoiceBox" fx:id="myChoiceBox" layoutX="245.0" layoutY="245.0" prefWidth="150.0" />
-            <Button fx:id="loginButton" layoutX="294.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-color: #76ABAE;" text="LogIn" textFill="#eeeeee" />
-            <Label fx:id="loginAsLabel" layoutX="292.0" layoutY="249.0" text="LogIn As" />
+            <ChoiceBox id="myChoiceBox" fx:id="myChoiceBox" layoutX="245.0" layoutY="233.0" prefWidth="150.0" />
+            <Label fx:id="loginAsLabel" layoutX="292.0" layoutY="237.0" text="LogIn As" />
          </children>
       </AnchorPane>
    </children>

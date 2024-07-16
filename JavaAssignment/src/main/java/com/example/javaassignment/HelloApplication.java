@@ -33,6 +33,12 @@ public class HelloApplication extends Application {
     @FXML
     private Button loginButton;
 
+    @FXML
+    private Label errorLabel;
+
+    @FXML
+    private Label errorLabel1;
+
     private final String[] choices = {"Admin", "Staff", "Student"};
 
     private static final String FILE_PATH = "users.csv";
@@ -64,9 +70,12 @@ public class HelloApplication extends Application {
         boolean validCredentials = validateCredentials(enteredUsername, enteredPassword, selectedRole);
 
         if (validCredentials) {
+            errorLabel.setVisible(false);
+            errorLabel1.setVisible(false);
             switchToRolePage(selectedRole);
         } else {
-            System.out.println("Invalid credentials");
+            errorLabel.setVisible(true);
+            errorLabel1.setVisible(true);
         }
     }
 
@@ -82,7 +91,7 @@ public class HelloApplication extends Application {
                 String fileRole = userData[7];
 
                 if (fileUsername.equals(username) && filePassword.equals(password) && fileRole.equals(role)) {
-                    loggedInUser = userData[0]+" "+ userData[1];
+                    loggedInUser = userData[0] + " " + userData[1];
                     loggedInFaculty = userData[6];
                     return true;
                 }
