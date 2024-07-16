@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,12 +28,16 @@ public class StudentDashboard {
     @FXML
     private Button viewProfile;
 
+    @FXML
+    private Label Name;
+
     private String studentName;
     private String faculty;
 
     public void setUserData(String studentName, String faculty) {
         this.studentName = studentName;
         this.faculty = faculty;
+        Name.setText(studentName);  // Set the label text to the student name
     }
 
     @FXML

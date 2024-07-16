@@ -39,7 +39,7 @@ public class StaffPage {
 
     @FXML
     private void handleGotoAdmissionAction(ActionEvent event) throws IOException {
-        navigateToPage("AdmissionPage.fxml");
+        navigateToPage("AdmissionOfficerPage.fxml");
     }
 
     @FXML
