@@ -51,6 +51,10 @@
                   <Font size="13.0" />
                </font>
             </Button>
+            <Label fx:id="errorLabel" layoutX="142.0" layoutY="373.0" text="Please fill all the fields" textFill="#ff5e5e" visible="false" />
+            <Label fx:id="passwordErrorLabel" layoutX="311.0" layoutY="206.0" text="Password must be at least 8 characters" textFill="#ff5e5e" visible="false" />
+            <Label fx:id="emailErrorLabel" layoutX="141.0" layoutY="283.0" text="Invalid email format" textFill="#ff5e5e" visible="false" />
+            <Label fx:id="phoneErrorLabel" layoutX="141.0" layoutY="322.0" text="Phone number must be 10 digits" textFill="#ff5e5e" visible="false" />
          </children>
       </AnchorPane>
    </children>
