@@ -46,6 +46,10 @@ public class HelloApplication extends Application {
     private String loggedInUser;
     private String loggedInFaculty;
 
+    private String loggedInPhone;
+
+    private String loggedInEmail;
+
     @FXML
     public void initialize() {
         myChoiceBox.getItems().addAll(choices);
@@ -93,6 +97,8 @@ public class HelloApplication extends Application {
                 if (fileUsername.equals(username) && filePassword.equals(password) && fileRole.equals(role)) {
                     loggedInUser = userData[0] + " " + userData[1];
                     loggedInFaculty = userData[6];
+                    loggedInPhone = userData[2];
+                    loggedInEmail = userData[5];
                     return true;
                 }
             }
@@ -120,7 +126,7 @@ public class HelloApplication extends Application {
                 loader = new FXMLLoader(getClass().getResource("StudentDashboard.fxml"));
                 scene = new Scene(loader.load());
                 StudentDashboard studentDashboard = loader.getController();
-                studentDashboard.setUserData(loggedInUser, loggedInFaculty);
+                studentDashboard.setUserData(loggedInUser, loggedInFaculty, loggedInPhone, loggedInEmail);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + role);
