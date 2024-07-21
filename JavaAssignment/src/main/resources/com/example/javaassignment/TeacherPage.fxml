@@ -22,22 +22,26 @@
                </font>
             </Label>
             <Button fx:id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
-            <Button layoutX="335.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleViewStudentProblemsButtonAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="View Student Results" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="viewStudentResultsButton" layoutX="335.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleViewStudentResultsButtonAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="View Student Results" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="viewProblems" layoutX="335.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleViewStudentProblemsButtonAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="View Student Problems" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Button>
-            <Button layoutX="115.0" layoutY="246.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="Create Test" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               </font>
+            </Button>
+            <Button fx:id="createTestButton" layoutX="115.0" layoutY="105.0" mnemonicParsing="false" onAction="#handleCreateTestButtonAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="Create Test" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Button>
-            <Button layoutX="115.0" layoutY="105.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="View Students" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               </font>
+            </Button>
+            <Button fx:id="viewStudentsButton" layoutX="115.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleViewStudentsButtonAction" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #76ABAE;" text="View Students" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

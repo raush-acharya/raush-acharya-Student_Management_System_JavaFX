@@ -29,22 +29,36 @@ public class StudentDashboard {
     private Button viewProfile;
 
     @FXML
-    private Label Name;
+    private Label nameLabel;
 
-    private String studentName;
-    private String faculty;
+    private StudentData studentData = StudentData.getInstance();
 
-    public void setUserData(String studentName, String faculty) {
-        this.studentName = studentName;
-        this.faculty = faculty;
-        Name.setText(studentName);  // Set the label text to the student name
+    public void setUserData(String studentName, String faculty, String phone, String email) {
+        studentData.setStudentName(studentName);
+        studentData.setFaculty(faculty);
+        studentData.setPhone(phone);
+        studentData.setEmail(email);
+
+        nameLabel.setText(studentName);
+    }
+
+    @FXML
+    private void initialize() {
+        nameLabel.setText(studentData.getStudentName());
     }
 
     @FXML
     private void handleLogoutButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) logoutButton.getScene().getWindow();
-        Scene scene;
-        scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml"))));
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml"))));
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleTakeTestButtonAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) takeTest.getScene().getWindow();
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TakeTest.fxml"))));
         stage.setScene(scene);
         stage.show();
     }
@@ -54,8 +68,33 @@ public class StudentDashboard {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ProblemForm.fxml"));
         Stage stage = (Stage) reportProblem.getScene().getWindow();
         Scene scene = new Scene(loader.load());
+
+        // Get the controller of ProblemForm and set the user data
         ProblemForm problemForm = loader.getController();
-        problemForm.setUserData(studentName, faculty);
+        problemForm.setUserData(studentData.getStudentName(), studentData.getFaculty());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleViewProfileButtonAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfileView.fxml"));
+        Stage stage = (Stage) viewProfile.getScene().getWindow();
+        Scene scene = new Scene(loader.load());
+
+        // Get the controller of ProfileView and set the user data
+        ProfileViewController profileViewController = loader.getController();
+        profileViewController.setUserData(studentData.getStudentName(), studentData.getFaculty(), studentData.getPhone(), studentData.getEmail());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    private void handleViewResultsButtonAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) viewResults.getScene().getWindow();
+        Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewResults.fxml"))));
         stage.setScene(scene);
         stage.show();
     }

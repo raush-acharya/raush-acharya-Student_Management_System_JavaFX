@@ -34,9 +34,17 @@ public class ProblemForm {
     @FXML
     private TextArea problemDescription;
 
+    private StudentData studentData = StudentData.getInstance();
+
     public void setUserData(String studentName, String faculty) {
         this.studentName.setText(studentName);
         this.Faculty.setText(faculty);
+    }
+
+    @FXML
+    private void initialize() {
+        studentName.setText(studentData.getStudentName());
+        Faculty.setText(studentData.getFaculty());
     }
 
     @FXML

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaassignment.StudentReportController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaassignment.ViewResultsController">
     <children>
         <AnchorPane prefHeight="402.0" prefWidth="600.0">
             <children>
@@ -19,20 +19,21 @@
                         <TableView fx:id="resultsTable" layoutX="43.0" layoutY="101.0" prefHeight="276.0" prefWidth="520.0" style="-fx-background-color: #31363F;">
                             <columns>
                                 <TableColumn fx:id="snColumn" prefWidth="37.0" style="-fx-background-color: #76ABAE;" text="SN" />
-                                <TableColumn fx:id="studentNameColumn" prefWidth="215.0" style="-fx-background-color: #76ABAE;" text="Student Name" />
-                                <TableColumn fx:id="questionColumn" prefWidth="112.0" style="-fx-background-color: #76ABAE;" text="Question" />
-                                <TableColumn fx:id="marksColumn" prefWidth="84.0" style="-fx-background-color: #76ABAE;" text="Marks" />
+                                <TableColumn fx:id="testFileNameColumn" prefWidth="215.0" style="-fx-background-color: #76ABAE;" text="Test File" />
+                                <TableColumn fx:id="totalMarksColumn" prefWidth="112.0" style="-fx-background-color: #76ABAE;" text="Total Marks" />
+                                <TableColumn fx:id="achievedMarksColumn" prefWidth="84.0" style="-fx-background-color: #76ABAE;" text="Achieved Marks" />
                                 <TableColumn fx:id="gradeColumn" prefWidth="71.0" style="-fx-background-color: #76ABAE;" text="Grade" />
                             </columns>
                         </TableView>
                     </children>
                 </Pane>
-                <Label layoutX="205.0" layoutY="22.0" text="Student Report" textAlignment="CENTER" textFill="WHITE">
+                <Label fx:id="studentNameLabel" layoutX="205.0" layoutY="22.0" text="Student Report" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="21.0" />
                     </font>
                 </Label>
                 <Button fx:id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
+                <Label fx:id="resultsForLabel" layoutX="50.0" layoutY="75.0" text="Results for [Student Name]" textFill="WHITE" />
             </children>
         </AnchorPane>
     </children>

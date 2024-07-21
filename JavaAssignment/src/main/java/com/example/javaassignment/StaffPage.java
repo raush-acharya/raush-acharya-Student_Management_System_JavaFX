@@ -44,7 +44,7 @@ public class StaffPage {
 
     @FXML
     private void handleGotoLibrarianAction(ActionEvent event) throws IOException {
-        navigateToPage("LibraryPage.fxml");
+        navigateToPage("LibrarianPage.fxml");
     }
 
     private void navigateToPage(String fxmlFile) throws IOException {

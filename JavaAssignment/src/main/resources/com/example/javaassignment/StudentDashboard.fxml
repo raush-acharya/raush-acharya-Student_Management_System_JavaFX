@@ -19,7 +19,7 @@
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Name" layoutX="148.0" layoutY="79.0" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="nameLabel" layoutX="148.0" layoutY="79.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
@@ -32,11 +32,11 @@
                </font>
             </Label>
             <Button fx:id="logoutButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="LogOut" textFill="WHITE" />
-            <Button fx:id="viewResults" layoutX="315.0" layoutY="117.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="View Results" textFill="WHITE">
+            <Button fx:id="viewResults" layoutX="315.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleViewResultsButtonAction" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="View Results" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="viewProfile" layoutX="315.0" layoutY="246.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="View Profile" textFill="WHITE">
+            <Button fx:id="viewProfile" layoutX="315.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleViewProfileButtonAction" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="View Profile" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
@@ -44,7 +44,7 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="takeTest" layoutX="115.0" layoutY="117.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="Take Test" textFill="WHITE">
+            <Button fx:id="takeTest" layoutX="115.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleTakeTestButtonAction" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #76ABAE;" text="Take Test" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>

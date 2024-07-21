@@ -9,30 +9,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane prefHeight="402.0" prefWidth="600.0">
-         <children>
-            <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #222831;">
-               <children>
-                  <Pane prefHeight="76.0" prefWidth="600.0" style="-fx-background-color: #31363F;" />
-                  <TableView layoutX="43.0" layoutY="101.0" prefHeight="276.0" prefWidth="520.0" style="-fx-background-color: #31363F;">
-                    <columns>
-                        <TableColumn prefWidth="37.0" style="-fx-background-color: #76ABAE;" text="SN" />
-                        <TableColumn prefWidth="227.0" style="-fx-background-color: #76ABAE;" text="Student Name" />
-                        <TableColumn prefWidth="127.0" style="-fx-background-color: #76ABAE;" text="Marks" />
-                        <TableColumn prefWidth="128.0" style="-fx-background-color: #76ABAE;" text="Grade" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
-            <Label layoutX="205.0" layoutY="22.0" text="Student Report" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Label>
-            <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
-         </children>
-      </AnchorPane>
-   </children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javaassignment.StudentReportController">
+    <children>
+        <AnchorPane prefHeight="402.0" prefWidth="600.0">
+            <children>
+                <Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #222831;">
+                    <children>
+                        <Pane prefHeight="76.0" prefWidth="600.0" style="-fx-background-color: #31363F;" />
+                        <TableView fx:id="resultsTable" layoutX="43.0" layoutY="101.0" prefHeight="276.0" prefWidth="520.0" style="-fx-background-color: #31363F;">
+                            <columns>
+                                <TableColumn fx:id="snColumn" prefWidth="37.0" style="-fx-background-color: #76ABAE;" text="SN" />
+                                <TableColumn fx:id="studentNameColumn" prefWidth="215.0" style="-fx-background-color: #76ABAE;" text="Student Name" />
+                                <TableColumn fx:id="questionColumn" prefWidth="112.0" style="-fx-background-color: #76ABAE;" text="Question" />
+                                <TableColumn fx:id="marksColumn" prefWidth="84.0" style="-fx-background-color: #76ABAE;" text="Marks" />
+                                <TableColumn fx:id="gradeColumn" prefWidth="71.0" style="-fx-background-color: #76ABAE;" text="Grade" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </Pane>
+                <Label layoutX="205.0" layoutY="22.0" text="Student Report" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="21.0" />
+                    </font>
+                </Label>
+                <Button fx:id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #76ABAE;" text="Back" textFill="WHITE" />
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>
