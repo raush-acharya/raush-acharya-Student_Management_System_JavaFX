@@ -68,7 +68,7 @@ public class AdminPage {
     @FXML
     void initialize() {
         // Initialize the ChoiceBoxes with appropriate values
-        userType.getItems().addAll("Admin", "Student", "Teacher", "Admission", "Librarian");
+        userType.getItems().addAll("Admin", "Student", "Staff");
         gender.getItems().addAll("Male", "Female", "Other");
 
         // Ensure the file exists
