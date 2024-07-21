@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -118,8 +120,10 @@ public class AdminPage {
             return;
         }
 
+        String hashedPassword = hashPassword(pwd);
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
-            writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", fName, lName, phone, uName, pwd, mail, fac, uType, gend));
+            writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", fName, lName, phone, uName, hashedPassword, mail, fac, uType, gend));
             showAlert(AlertType.INFORMATION, "Registration Successful!", "User has been registered successfully.");
         } catch (IOException e) {
             showAlert(AlertType.ERROR, "Error", "Could not save user data.");
@@ -189,5 +193,21 @@ public class AdminPage {
         Pattern pattern = Pattern.compile(phoneRegex);
         Matcher matcher = pattern.matcher(phoneNumber);
         return matcher.matches();
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes("UTF-8"));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

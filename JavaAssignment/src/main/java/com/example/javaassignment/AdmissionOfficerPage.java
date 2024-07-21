@@ -11,8 +11,11 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class AdmissionOfficerPage {
@@ -79,8 +82,10 @@ public class AdmissionOfficerPage {
             return;
         }
 
+        String hashedPassword = hashPassword(pwd);
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
-            writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", fName, lName, phone, uName, pwd, mail, fac, uType, gend));
+            writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", fName, lName, phone, uName, hashedPassword, mail, fac, uType, gend));
             showAlert(AlertType.INFORMATION, "Registration Successful!", "Student has been registered successfully.");
         } catch (IOException e) {
             showAlert(AlertType.ERROR, "Error", "Could not save student data.");
@@ -102,5 +107,21 @@ public class AdmissionOfficerPage {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes("UTF-8"));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

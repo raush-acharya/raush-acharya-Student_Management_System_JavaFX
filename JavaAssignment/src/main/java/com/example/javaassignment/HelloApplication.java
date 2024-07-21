@@ -14,6 +14,9 @@ import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
@@ -45,9 +48,7 @@ public class HelloApplication extends Application {
 
     private String loggedInUser;
     private String loggedInFaculty;
-
     private String loggedInPhone;
-
     private String loggedInEmail;
 
     @FXML
@@ -94,12 +95,15 @@ public class HelloApplication extends Application {
                 String filePassword = userData[4];
                 String fileRole = userData[7];
 
-                if (fileUsername.equals(username) && filePassword.equals(password) && fileRole.equals(role)) {
-                    loggedInUser = userData[0] + " " + userData[1];
-                    loggedInFaculty = userData[6];
-                    loggedInPhone = userData[2];
-                    loggedInEmail = userData[5];
-                    return true;
+                if (fileUsername.equals(username) && fileRole.equals(role)) {
+                    String hashedInputPassword = hashPassword(password);
+                    if (filePassword.equals(hashedInputPassword)) {
+                        loggedInUser = userData[0] + " " + userData[1];
+                        loggedInFaculty = userData[6];
+                        loggedInPhone = userData[2];
+                        loggedInEmail = userData[5];
+                        return true;
+                    }
                 }
             }
         } catch (IOException e) {
@@ -134,6 +138,22 @@ public class HelloApplication extends Application {
 
         stage.setScene(scene);
         stage.show();
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(password.getBytes("UTF-8"));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
